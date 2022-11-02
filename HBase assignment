@@ -1,0 +1,36 @@
+Hbase table
+
+Create ‘test_flight_delays’,’dims’,’measures’
+
+Hive table
+
+CREATE EXTERNAL TABLE IF not exists hbase_flight_delays
+(key string,
+carrier string,
+distance int
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+WITH SERDEPROPERTIES
+("hbase.columns.mapping"=":key,dims:carrier,measures:distance")
+TBLPROPERTIES("hbase.table.name"="test_flight_delays")
+;
+
+Hive stage table
+
+CREATE EXTERNAL TABLE IF not exists hbase_stg_flight_delays
+(key string,
+carrier string,
+distance int
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+;
+
+
+Create a file in cloudera.
+
+Vi testdata_hbase.CSV
+1, ‘hyd’,25000
+2, ‘blr’, 30000
