@@ -34,3 +34,32 @@ Create a file in cloudera.
 Vi testdata_hbase.CSV
 1, ‘hyd’,25000
 2, ‘blr’, 30000
+
+
+Loading the data into a stage table.
+
+Load data local inpath ‘/home/cloudera/testdata_hbase.CSV’ into table hbase_stg_flight_delays;
+
+
+Insert the data from stage table to main hive table
+
+insert into table hbase_flght_delays select * from hbase_stg_flight_delays;
+
+
+Select * from hbase_flight_delays
+
+
+Put the data into the hbase table.
+
+Put ‘test_flight_delays’ , ‘5’, ‘dims:carrier’, ‘mycarfromhbase’
+
+
+###Assignment
+sales .csv
+
+#Already create a schema in Hive 
+
+Create a schema in hive(storage handler)
+
+
+Create a column family in hbase
